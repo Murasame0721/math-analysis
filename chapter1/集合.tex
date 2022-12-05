@@ -1,0 +1,57 @@
+\chapter{集合}
+
+在中学阶段，大家已经初步接触过关于集合的知识。例如，自然数全体形成一个集合，常记为$\mathbb{N}$；有理数形成一个集合，常记为$\mathbb{Q}$；实数形成一个集合，记为$\mathbb{R}$.关于集合的精确定义是很难给出的，根据Cantor给出的概念（概括性），可以这样定义集合
+
+\begin{definition}
+    集合是把具有某种特征或满足一定性质的所有对象视为整体时，这个整体是集合，而这些对象就称为集合中的元素
+\end{definition}
+
+在这个描述性的定义上，需要建立公理，满足数学的严谨性要求。
+
+\section{集合与子集}
+
+我们约定，集合的符号用大写字母$A,B,C,\cdots,X,Y,Z$等表示，集合中的元素用$a,b,c,\cdots,x,y,z$等表示。若$a$是$A$的元素，则记为$a \in A$，称$a$属于$A$
+
+对于集合，在中学阶段我们已经学过了这些定义
+
+\begin{definition}
+    对于两个集合$A,B$.若$x \in A$必定有$x \in B$，则称$A$是$B$的子集，记作：
+    \[ A\subset B \]
+    如果$\exists b \in B, b \notin A$，则称$A$是$B$的真子集，记作$A\subsetneq B$
+\end{definition}
+
+\begin{definition}
+    空集是不包含任何元素的集合，记作$\varnothing $
+
+    规定：空集是任何集合的子集
+\end{definition}
+
+\begin{definition}
+    设集合$A,B$，若$A\subset B$且$B \subset A$，则称$A$与$B$相等或等同，记作$A=B$
+\end{definition}
+
+对于一系列具有共同特征的集合，我们可以对每一个集合进行标号，可以将标号组成的集合记作$I$，称为指标集。在此基础上，可以给出集合族的定义
+
+\begin{definition}
+    设$I$是给定的一个集合，对于每一个$\alpha \in I$，指定一个集合$A_\alpha$ ，这样可以得到一系列集合，它们的总体称为集合族，记为$\left\{A_\alpha : \alpha \in I \right\}$或者$\left\{A_\alpha \right\}_{\alpha \in I}$
+
+    当$I=\mathbb{N}$时，集合族也称为集合列，简记为$\left\{A_i \right\}$这样的形式
+
+    集合族常常用花体字母表示，如$\mathcal{A},\mathcal{B} ,\mathcal{P} $ 
+\end{definition}
+
+事实上，上述集合的描述是不完美的。我们可以构造出一种情况，使得一个元素既不能属于一个集合，又不能不属于这个集合。
+
+\begin{example}
+    （罗素悖论）定义$S=\left\{A:A\notin A \right\}$，判断$S\in S$是否成立
+\end{example}
+
+首先，我们需要明白的是，上面的$\notin$并不是$\nsubset$，这里不是作者笔误（这是初学者常有的误解）。
+
+为了便于理解$A \in A$是什么情况，我们可以先尝试找到一个符合这种性质的集合。事实上，我们不难发现：由全体无限集组成的集合满足$A\in A$。换句话说，全体无限集组成的集合属于它自身。
+
+回到正题。假设$S\in S$，那么根据$S$的定义，有$S \notin S$；假设$S \notin S$，则根据定义，有$S \in S$.从而无法判断$S$是否是$S$的元素
+
+这个悖论类似于理发师悖论。感兴趣的同学可以上网搜索。
+
+罗素悖论和它引申出的其他悖论要求对集合设置自洽的公理体系，著名的公理系统有ZF公理系统和NBG公理系统。这些内容超过了本书涉及范围，故不赘述。

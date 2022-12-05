@@ -1,0 +1,29 @@
+\documentclass[cn,12pt,math=newtx]{elegantbook}
+
+\usepackage{CJKfntef}
+\usepackage{amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{svg}
+\usepackage{chemformula}
+
+\cover{figure/cover.jpg}
+
+\input{newCommand.tex}
+
+\title{数学分析讲义}
+\author{Ayame}
+\date{\today}
+
+\begin{document}
+    \maketitle
+    \frontmatter
+
+    \input{introduce/introduce.tex}
+
+    \tableofcontents
+    \mainmatter
+    \newpage
+    
+    \input{chapter1/集合.tex}
+\end{document}
