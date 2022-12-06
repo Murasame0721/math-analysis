@@ -1,6 +1,6 @@
 \chapter{集合}
 
-在中学阶段，大家已经初步接触过关于集合的知识。例如，自然数全体形成一个集合，常记为$\mathbb{N}$；有理数形成一个集合，常记为$\mathbb{Q}$；实数形成一个集合，记为$\mathbb{R}$.关于集合的精确定义是很难给出的，根据Cantor给出的概念（概括性），可以这样定义集合。
+在中学阶段，大家已经初步接触过关于集合的知识。例如，自然数全体形成一个集合，常记为$\NN$；有理数形成一个集合，常记为$\QQ$；实数形成一个集合，记为$\RR$.关于集合的精确定义是很难给出的，根据Cantor给出的概念（概括性），可以这样定义集合。
 
 \begin{definition}
     集合是把具有某种特征或满足一定性质的所有对象视为整体时，这个整体是集合，而这些对象就称为集合中的元素
@@ -10,7 +10,7 @@
 
 在集合的基础上，我们可以为集合定义距离、范数、向量内积、二元运算。通过定义运算，可以形成代数结构；通过定义距离、范数、向量内积，可以形成各种空间。
 
-在对集合有基础的了解后，我们将在最常用的集合——实数集$\mathbb{R}$上，定义序关系、加法、乘法，并开始我们的数学分析学习之旅。
+在对集合有基础的了解后，我们将在最常用的集合——实数集$\RR$上，定义序关系、加法、乘法，并开始我们的数学分析学习之旅。
 
 \section{集合与子集}
 
@@ -37,9 +37,9 @@
 对于一系列具有共同特征的集合，我们可以对每一个集合进行标号，可以将标号组成的集合记作$I$，称为指标集。在此基础上，可以给出集合族的定义
 
 \begin{definition}[集合族]
-    设$I$是给定的一个集合，对于每一个$\alpha \in I$，指定一个集合$A_\alpha$ ，这样可以得到一系列集合，它们的总体称为集合族，记为$\left\{A_\alpha : \alpha \in I \right\}$或者$\left\{A_\alpha \right\}_{\alpha \in I}$
+    设$I$是给定的一个集合，对于每一个$\indexAlpha$，指定一个集合$A_\alpha$ ，这样可以得到一系列集合，它们的总体称为集合族，记为$\left\{A_\alpha : \indexAlpha \right\}$或者$\left\{A_\alpha \right\}_{\indexAlpha}$
 
-    当$I=\mathbb{N}$时，集合族也称为集合列，简记为$\left\{A_i \right\}$这样的形式
+    当$I=\NN$时，集合族也称为集合列，简记为$\left\{A_i \right\}$这样的形式
 
     集合族常常用花体字母表示，如$\mathcal{A},\mathcal{B} ,\mathcal{P} $ 
 \end{definition}
@@ -66,7 +66,7 @@
 
 在中学阶段，我们已经学过简单的集合的并、交、补。
 
-\subsection*{交与并}
+\subsection{交与并}
 
 \begin{definition}
     设集合$A,B$，称集合$\left\{x: x\in A \text{或} x \in B \right\}$ 为$A$与$B$的并集，记作$A \cup B$.
@@ -108,14 +108,14 @@
 类似于两个集合的交、并，可以定义多个集合的交、并。（此处的多个可以是无穷多个，甚至可以是比自然数的个数更大的无穷）
 
 \begin{definition}
-    设集合族$\left\{A_\alpha \right\}_{\alpha \in I}$,定义并集和交集如下：
+    设集合族$\left\{A_\alpha \right\}_{\indexAlpha}$,定义并集和交集如下：
 
     \begin{equation*}
-        \bigcup_{\alpha \in I}A_\alpha = \left\{ x: \exists \alpha \in I, x \in A_\alpha \right\} 
+        \bigcup_{\indexAlpha}A_\alpha = \left\{ x: \exists \indexAlpha, x \in A_\alpha \right\} 
     \end{equation*}
 
     \begin{equation*}
-        \bigcap_{\alpha \in I} A_\alpha = \left\{ x:\forall \alpha \in I, x\in A_\alpha \right\}
+        \bigcap_{\indexAlpha} A_\alpha = \left\{ x:\forall \indexAlpha, x\in A_\alpha \right\}
     \end{equation*}
 \end{definition}
 
@@ -131,8 +131,8 @@
     多个集合运算的分配律：
     \begin{equation}
     \begin{split}
-        A\cap \left(\bigcup_{\alpha \in I} B_\alpha\right) = \bigcup_{\alpha \in I}(A\cap B_\alpha); \\
-        A\cup \left(\bigcap_{\alpha \in I} B_\alpha\right) = \bigcap_{\alpha \in I}(A\cup B_\alpha).
+        A\cap \left(\bigcup_{\indexAlpha} B_\alpha\right) = \bigcup_{\indexAlpha}(A\cap B_\alpha); \\
+        A\cup \left(\bigcap_{\indexAlpha} B_\alpha\right) = \bigcap_{\indexAlpha}(A\cup B_\alpha).
     \end{split}
     \end{equation}
 \end{theorem}
@@ -147,7 +147,7 @@
     \bigcap_{k=0}^{\infty} \bigcup_{i=0}^{3^k} \left[\frac{2i}{3^k},\frac{2i+1}{3^k}\right]
 \end{equation*}
 
-\subsection*{差与补}
+\subsection{差与补}
 
 \begin{definition}[差集]
     设集合$A,B$，称$\left\{x:x\in A, x\notin B \right\}$为$A$与$B$的差集，记作$A\backslash B$.（读作$A$减$B$）
@@ -172,14 +172,62 @@
 \begin{theorem}[De.Morgan法则]
     \begin{equation}
         \label{eq:deMorgan1}
-        \left(\bigcup_{\alpha \in I} A_\alpha\right)^c = \bigcap_{\alpha \in I} A_\alpha^c
+        \left(\bigcup_{\indexAlpha} A_\alpha\right)^c = \bigcap_{\indexAlpha} A_\alpha^c
     \end{equation}
     \begin{equation}
         \label{eq:deMorgan2}
-        \left(\bigcap_{\alpha \in I} A_\alpha\right)^c = \bigcup_{\alpha \in I} A_\alpha^c
+        \left(\bigcap_{\indexAlpha} A_\alpha\right)^c = \bigcup_{\indexAlpha} A_\alpha^c
     \end{equation}
 \end{theorem}
 
 \begin{proof}
-    以\eqref{eq:deMorgan1}为例，对于任意$\displaystyle x\in \left(\bigcup_{\alpha \in I} A_\alpha\right)^c$，有$x\in \bigcup_{\alpha}$
+    以\eqref{eq:deMorgan1}为例，对于任意$\displaystyle x\in \left(\bigcup_{\indexAlpha} A_\alpha\right)^c$，有$\displaystyle x\notin \bigcup_{\indexAlpha}A_\alpha$，即$\forall \indexAlpha,x\notin A_\alpha$
+
+    也就是说$\forall \indexAlpha,x\in A^c_\alpha$，故$\displaystyle x\in \bigcap_{\indexAlpha}A_\alpha^c$
+
+    所以，$\displaystyle \left(\bigcup_{\indexAlpha} A_\alpha\right)^c \subset \bigcap_{\indexAlpha} A_\alpha^c$
+
+    反过来，对于任意$\displaystyle x\in \bigcap_{\indexAlpha}A_\alpha^c$，有$\forall \indexAlpha,x\in A^c_\alpha$，即$\forall \indexAlpha,x\notin A_\alpha$
+
+    所以$\displaystyle x\in \left(\bigcup_{\indexAlpha} A_\alpha\right)^c$
+
+    所以$\displaystyle \bigcap_{\indexAlpha} A_\alpha^c \subset \left(\bigcup_{\indexAlpha} A_\alpha\right)^c$
+
+    综上，\eqref{eq:deMorgan1}得证
 \end{proof}
+
+请读者模仿上述证明过程，自行证明\eqref{eq:deMorgan2}
+
+\begin{remark}
+    证明两个集合互为子集是证明两个集合相等的一种常用方法。这种方法也可以推广到其他与“子集”相关的证明，如数论中证明两个整数相等可以用互相整除证明。
+\end{remark}
+
+\subsection*{集合列的极限}
+
+本部分将在极限章节中讲述
+
+\subsection{笛卡尔积}
+
+笛卡尔积（Cartesian product）又称直积，是一种将多个集合中的元素直接组合起来的运算。
+
+\begin{definition}
+    设集合$X,Y$，$x\in X,y\in Y$，称一切形如$(x,y)$的有序“元素对”形成的集合为$X,Y$的笛卡尔积，记作$X\times Y$，即
+
+    \begin{equation*}
+        X\times Y=\left\{(x,y):x\in X,y\in Y \right\}
+    \end{equation*}
+
+    集合对自身的笛卡尔积如$X\times X$可以记为$X^2$
+\end{definition}
+
+\subsection{幂集}
+
+\begin{definition}
+    设$X$是一个非空集合，由$X$的一切子集（包括$\varnothing$和自身）为元素形成的集合称为$X$的幂集，记作$\PP(X)$
+\end{definition}
+
+\begin{example}
+    设$E$是有$n$个元素的有限集，求$\PP(E)$的元素个数
+\end{example}
+
+对于任何一个元素，要么它在$E$的子集中，要么不在。并且，一个元素是否在子集不影响另外一个元素是否在子集中。所以，$\PP(E)$的元素个数为$2^n$

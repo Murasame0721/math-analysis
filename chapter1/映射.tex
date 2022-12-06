@@ -1,0 +1,78 @@
+\section{映射与基数}
+
+通过映射，我们把不同的集合联系起来。而运用映射联系不同的集合时，有时会出现不能建立联系的情况，这种情况发生的原因是因为集合中元素的多少不同。
+
+对于有限集，我们很容易描述它元素的个数来表示其中元素的多少；而对于无限集，元素的多少是难以描述的。同为无限集时，有些集合的元素远多于另一个集合以至于不能一一对应。但有时，看起来元素不一样多的集合却能够形成一一对应的关系（比如说整数和偶数）。为了衡量集合中元素的多少，引入基数的概念。
+
+\subsection{映射}
+
+在中学中，我们已经学过函数的概念。函数是从定义域到$\RR$的一种对应关系，我们把这种概念推广到一般的集合。
+
+\begin{definition}[映射]
+    设非空集合$X,Y$，若$\forall x\in X$，存在唯一的$y\in Y$与之对应，则称这个对应为映射。若用$f$表示这种对应，则记作
+
+    \begin{equation*}
+        f:X\rightarrow Y
+    \end{equation*}
+
+    并称$f$是从$X$到$Y$的一个映射。
+\end{definition}
+
+类似于复合函数，有复合映射
+
+\begin{definition}
+    设$f:X\rightarrow Y,g:Y\rightarrow W$，则
+    \[h(x) = g(f(x)),x\in X \]
+
+    定义的$h$称为$g$与$f$的复合映射，可记作$f\circ g$
+\end{definition}
+
+类似于函数的自变量和因变量，映射有“像”和“原像”。
+
+\begin{definition}[像、原像]
+    设$x\in X$，$y$是$Y$中与$x$对应的元素，称$y=f(x)$是$x$的像，$x$是$y$的原像。
+    
+    对于集合，称$f(A)=\{y\in Y:x\in A,y=f(x)\}$为$A$的像集（可简称为像）；
+
+    称$f^{-1}(B)=\{x\in X:y\in B,y=f(x)\}$为$B$关于$f$的原像集（可简称为原像）。
+\end{definition}
+
+显然，像具有以下性质
+
+\begin{enumerate}
+    \item $\displaystyle f\left(\bigcup_{\alpha \in I}A_\alpha \right)= \bigcup_{\indexAlpha}f(A_\alpha)$
+    \item $\displaystyle f\left(\bigcap_{\alpha \in I}A_\alpha \right)\subset \bigcap_{\indexAlpha}f(A_\alpha)$
+    \item $\displaystyle f^{-1}\left(\bigcup_{\alpha \in I}B_\alpha \right)= \bigcup_{\indexAlpha}f^{-1}(B_\alpha)(B_\alpha \subset Y,\indexAlpha)$
+    \item $\displaystyle f^{-1}\left(\bigcap_{\alpha \in I}B_\alpha \right)= \bigcap_{\indexAlpha}f^{-1}(B_\alpha)(B_\alpha\in Y,\indexAlpha)$ 
+    \item 若$B_1\subset B_2 \subset Y$，则$f^{-1}(B_1)\subset f^{-1}(B_2)$
+\end{enumerate}
+
+接下来，将要讲到3个重要的映射——单射、满射、双射。
+
+\begin{definition}[单射]
+    不同元有不同像的映射是单射，即：
+
+    设$f:X\rightarrow Y$，若$\forall x_1,x_2 \in X\text{且}x_1 \neq x_2$时，有$f(x_1)\neq f(x_2)$，则$f$是单射。
+\end{definition}
+
+    一种单射的等价描述是：任何一个像都只有一个原像的映射是单射
+
+\begin{definition}[满射]
+    $Y$是像的映射是满射，即：
+
+    设$f:X\rightarrow Y$，若$\forall y\in Y,\exists x\in X,y=f(x)$，则$f$是满射。
+\end{definition}
+
+\begin{definition}[双射]
+    既是单射又是满射的映射是双射
+\end{definition}
+
+不难发现，整数集和偶数集能够形成双射。事实上，与真子集形成双射是无限集区别于有限集的一个重要特征。
+
+\begin{proposition}
+    一个集合能够与它的真子集形成双射当且仅当它是无限集。
+\end{proposition}
+
+\begin{proof}
+    先证明充分性。
+\end{proof}
