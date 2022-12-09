@@ -93,15 +93,7 @@
     显然，$g$是双射，必要性得证
 \end{proof}
 
-在下一部分中，我们将比较集合的多少。比较集合的多少会经常需要证明两个集合之间存在双射，而这有时是困难的，但我们可以利用以下命题简化证明。
-
-\begin{proposition}
-    设集合$A,B$，若存在映射$f:A\rightarrow B,g:B\rightarrow A$，且都是单射，则存在$A$到$B$的双射。
-\end{proposition}
-
-\begin{proof}
-    
-\end{proof}
+在下一部分中，我们将比较集合的多少。比较集合的多少会经常需要证明两个集合之间存在双射。
 
 \subsection{基数}
 
@@ -118,3 +110,95 @@
 \begin{definition}
     设集合$A,B$，若存在一个双射$f:A\rightarrow B$，则称集合$A$与$B$对等，记作$A\sim B$
 \end{definition}
+
+\begin{example}
+    求证$\NN \times \NN \sim \NN$
+\end{example}
+
+\begin{proof}
+    我们知道，任何一个大于1的整数都能够被素因数分解。并且，2是最小的素数。
+
+    所以，任意自然数$n$均可唯一地表示为$n=2^p \cdot q$，其中$p$为非负整数，$q$为正奇数。
+
+    于是，就存在双射
+    \[f(i,j) = 2^{i-1}(2j-1),\quad (i,j\in \NN) \]
+    
+    满足$\NN \times \NN \rightarrow \NN$
+
+\end{proof}
+
+显然，对等关系具有以下基本性质：
+
+\begin{enumerate}
+    \item $A\sim A$
+    \item 若$A\sim B$，则$B\sim A$
+    \item 若$A\sim B,B\sim C$，则$A\sim C$
+\end{enumerate}
+
+由这些性质，我们就可以通过过渡集合获得两个集合之间的一一对应关系。此外，还可以采用分解与合成的思想，尤其是以下的Cantor-Bernstein定理，更是一种证明集合对等的重要手段。
+
+\begin{remark}
+    这个定理的证明是一个难点
+\end{remark}
+
+\begin{theorem}[Cantor-Bernstein定理]
+    若集合$X$与$Y$的某个真子集对等，$Y$与$X$的某个真子集对等，则$X\sim Y$
+
+    这个定理的一种等价叙述是：若集合$X,Y$间存在映射$f:X\rightarrow Y,g:Y\rightarrow X$，且都是单射，则$X\sim Y$
+\end{theorem}
+
+\begin{proof}
+    首先对集合进行划分。设单射$f:X\rightarrow Y,g:Y\rightarrow X$
+
+    定义一个可能用于划分集合的过程$r$：
+
+    对集合$X$中的点$x\in A$，$r(x) = g^{-1}(x) \in Y$；
+
+    对集合$B$中的点$y\in B$，$r(y) = f^{-1}(y) \in X$.
+
+    对$X$中的点进行$r$过程，得到$Y$中的点，再对这个点进行$r$过程，会再次得到$X$中的点（假设这些操作均可行）
+
+    注意到，集合$X\backslash g(Y)$和集合$Y\backslash f(X)$中的点不能进行$r$过程。
+
+    根据是否能无限地迭代进行$r$过程，将$X,Y$分别分割成3个部分，即
+    \[ X= X_\infty \sqcup X_X \sqcup X_Y\]
+    \[Y = Y_\infty \sqcup Y_X \sqcup Y_Y\]
+
+    其中下标为$\infty$的集合中的点能够无限地进行$r$过程；下标为$X$的集合在进行$n(n\geq 0)$次过程后，落入集合$X\backslash g(Y)$；下标为$Y$的集合在进行$n(n\geq 0)$次过程后，落入集合$Y\backslash f(X)$
+
+    首先，限制在$X_\infty \rightarrow Y_\infty$的映射$f$是一个双射，理由如下：
+
+    对任意一个$Y_\infty$中的点$y_\infty$，进行一次$r$过程，必定会得到$X_\infty$中的点$x_\infty$，即
+    \[\forall y_\infty \in Y_\infty,\ \exists x_\infty ,\ f^{-1}\left(y_\infty \right) = x_\infty\]
+    
+    所以，$f:X_\infty \rightarrow Y_\infty$是满射。
+
+    又因为$f$是单射，所以$f:X_\infty \rightarrow Y_\infty$是双射。
+
+    同理，$f: X_X \rightarrow Y_X$是双射。
+
+    对于$X$的最后一部分（$X_Y$），我们不能仿照上面的做法。因为对于$Y \backslash f(X) \subset Y_Y$，而$Y \backslash f(X)$是$f$是达不到的。
+
+    所以对于这一部分，我们要用$g$构造双射。
+
+    对任意$X_Y$中的点$x_Y$，进行一次过程$r$，必然会得到$Y_Y$中的点$y_Y$，即
+
+    \[\forall x_Y \in X_Y,\ \exists y_Y\in Y_Y,\ g^{-1}(x_Y) = y_Y \]
+
+    所以$g: Y_Y\rightarrow X_Y$是双射，所以$g^{-1}:X_Y \rightarrow Y_Y$是双射。
+
+    于是，就得到了双射$h:X\rightarrow Y$
+
+    \begin{equation*}
+        h(x) =
+    \begin{cases}
+         f(x), \text{当}x\in X_\infty \cup X_X \\
+         g^{-1}(x),\text{当}x\in X_Y
+    \end{cases}
+    \end{equation*}
+
+\end{proof}
+
+\begin{remark}
+    符号$\sqcup$称作无交并，这个符号的意义是：对于满足$M\cap N = \varnothing$的集合$M,N,$有$M\sqcup N = M\cup N$
+\end{remark}
