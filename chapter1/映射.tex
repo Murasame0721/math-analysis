@@ -84,7 +84,7 @@
 
     证明必要性只需要找到一个任何无限集都存在的到自身真子集的双射。
 
-    设无限集$B$，由于$B$是无限集，必定存在一个自然数集$\NN$到$B$的单射，于是，得到了一列元素${b_n}(n\in \NN+)$.
+    设无限集$B$，由于$B$是无限集，由定理\ref{th:aleph0IsMin}，必定存在一个自然数集$\NN$到$B$的单射，于是，得到了一列元素${b_n}(n\in \NN+)$.
 
     这样，可以定义映射$g:B\rightarrow B\backslash\{b_1\}$，$g$的定义如下：
 
@@ -202,3 +202,207 @@
 \begin{remark}
     符号$\sqcup$称作无交并，这个符号的意义是：对于满足$M\cap N = \varnothing$的集合$M,N,$有$M\sqcup N = M\cup N$
 \end{remark}
+
+在定理的基础上，有：设集合$A,B,C$满足以下关系：
+\[C\subset A \subset B\]
+
+那么就有：若$B\sim C$，则$B\sim A$
+
+\begin{example}
+    求证：$[-1,1]\sim \RR$
+\end{example}
+
+运用正切函数，不难证明$(-1,1)\sim \RR$
+
+由于$(-1,1)\subset [-1,1] \subset \RR$
+
+所以$[-1,1]\sim \RR$
+
+$\blacksquare $
+
+事实上，建立$[-1,1]$与$\RR$之间的双射是有些困难的，如果读者有兴趣，可以尝试一下。
+
+现在，让我们正式开始讲基数的概念。
+
+\begin{definition}[基数（势）]
+    若$A\sim B$，那么$A$与$B$的基数是相同的。记作$\dbar{A} = \dbar{B}$
+
+    若$A$与$B$的子集对等，则记作$\dbar{A}\leq \dbar{B}$（反之同理）
+
+    若$\dbar{A}\leq \dbar{B}$且$\dbar{A}\neq \dbar{B}$，则记作$\dbar{A}< \dbar{B}$（反之同理）
+\end{definition}
+
+由Cantor-Bernstein定理，显然，若$\dbar{A}\leq \dbar{B}$且$\dbar{A}\geq \dbar{B}$，则$\dbar{A} = \dbar{B}$
+
+\begin{remark}
+    由于选择公理，不可能发生下述情景：$A$与$B$的任一子集不对等且$B$与$A$的任一子集不对等。有些关于集合的命题的证明必须用到选择公理。但若承认选择公理成立，就会得出一些奇怪的结论，如“分球怪论”（Banach–Tarski 悖论）。
+\end{remark}
+
+现在提出一个问题：是否有最大的基数？事实上，没有最大的基数。
+
+\begin{theorem}[无最大基数定理]
+    若$A$是非空集合，则$\dbar{\PP (A)} >\dbar{A}$
+\end{theorem}
+
+\begin{proof}
+    显然，$\dbar{\PP (A)} \geq\dbar{A}$，只需证$\dbar{\PP (A)} \neq\dbar{A}$
+
+    设$\dbar{\PP (A)} =\dbar{A}$，则存在双射$f:A\rightarrow \PP(A)$，
+
+    作集合$B=\{x\in A:x\notin f(x) \}$
+
+    显然，$B\in \PP(A)$
+
+    由双射定义，$\exists y\in A,f(y) = B \in \PP(A)$
+
+    于是产生了类似于罗素悖论的情况。
+
+    \begin{enumerate}
+        \item 若$y\in B$，则由$B$的定义，$y\notin f(y) =B$
+        \item 若$y\notin B$，则由$B$的定义，$y\in f(y) = B$
+    \end{enumerate}
+
+    这个矛盾表明$f$不存在，即$\dbar{\PP (A)} \neq\dbar{A}$
+
+    $\blacksquare$
+
+\end{proof}
+
+有了基数的定义，就能够明确地定义有限集和无限集。
+
+\begin{definition}[有限集和无限集]
+    设集合$A$，如果$\exists n,A\sim \{1,2,\cdots,n\}$，则$A$为有限集，并用$n$表示$A$的基数。
+
+    若一个集合不是有限集，则是无限集
+\end{definition}
+
+\section{可数集}
+
+\begin{definition}[可数集]
+    记自然数集$\NN$的基数为$\aleph_0  $（读作阿列夫零，Aleph zero）。
+    
+    若$\dbar{A} = \aleph_0$，则$A$为可数集（也叫作可列集）
+
+    若$\dbar{B}>\aleph_0$，则$B$为不可数集
+\end{definition}
+
+在日常生活中，通常，我们会用自然数来数数，因而将与$\NN$对等的集合称作可数集，因为可以将$A$中元素按一一对应关系以自然数附以下标，如
+
+\[A=\{a_1,a_2,\cdots,a_n,\cdots \}\]
+
+\begin{theorem}
+    \label{th:aleph0IsMin}
+    任一无限集必定包含可数子集
+\end{theorem}
+
+\begin{proof}
+    设无限集$E$
+
+    任取$E$中一元素，记为$a_1$，在从$E\backslash \{a_1\}$中任取一元，记为$a_2,\cdots$
+
+    设已选出$a_1,a_2,\cdots,a_n$,因为$E$是无限集，所以还可以继续重复
+
+    这样，就得到一个可数集且是$E$的子集
+
+    \qde
+\end{proof}
+
+这个定理说明，在所有的无限集中，最小的基数是$\aleph_0$
+
+显然，可数集有以下性质：
+
+若$A$和$B$是可数集，则
+
+\begin{enumerate}
+    \item $A\cap B$是可数集或有限集或$\varnothing$
+    \item $A\cup B$是可数集
+\end{enumerate}
+
+\begin{theorem}
+    \label{th:countableCupIscountable}
+    若$A_n(n=1,2,\cdots)$为可数集，则并集
+    \[A=\bigcup_{n=1}^{\infty} A_n\]
+
+    也是可数集
+\end{theorem}
+
+\begin{proof}
+    只需讨论$A_i\cap A_j \neq \varnothing(i\neq j)$的情景，设：
+    \begin{equation*}
+        A_1=\{a_{11},a_{12},\cdots,a_{1j},\cdots\},
+    \end{equation*}
+    \begin{equation*}
+        A_2=\{a_{21},a_{22},\cdots,a_{2j},\cdots\}, 
+    \end{equation*}
+    \begin{equation*}
+        \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots
+    \end{equation*}
+    \begin{equation*}
+        A_i=\{a_{i1},a_{i2},\cdots,a_{ij},\cdots\}
+    \end{equation*}
+    \begin{equation*}
+        \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots \cdots
+    \end{equation*}
+
+    将$A$中元素按照对角线排列形如
+
+    \begin{equation*}
+        \begin{matrix}
+            a_{11} &\ & a_{12} &\  &a_{13} &\ &a_{14}& \cdots \\
+            \  & \nearrow & \ &\nearrow &\ &\nearrow \\
+            a_{21} &\ &a_{22}&\ &a_{23}&\ &a_{24} &\cdots \\
+            \ & \nearrow &\ &\nearrow \\
+            a_{31}&\ &a_{32}&\ &a_{33}&\ &a_{34} &\cdots \\
+            \  &\nearrow &\ \\
+            a_{41}&\ &a_{42}&\ &a_{43} &\ &a_{44}&\cdots \\
+            \vdots &\ &\vdots&\ &\vdots&\ &\vdots
+        \end{matrix}
+    \end{equation*}
+
+    得到集合
+    \[\{a_{11},a_{21},a_{12},a_{31},a_{22},a_{13},\cdots\}\]
+
+    因此，设集合$\{b_n\} =\bigcup_{k=1}^{\infty} A_k$，$b_n = a_{ij}$，其中
+    \[n=j+\sum_{k=1}^{i+j-2}k \]
+
+    \qde
+\end{proof}
+
+\begin{proposition}
+    $\QQ$是可数集
+\end{proposition}
+\begin{proof}
+    设集合$A_i=\{i/k :k\in\NN\}$
+
+    由定理\ref{th:countableCupIscountable}，正有理数集$\bigcup_{i=1}^{\infty}A_i$是可数集
+
+    因为正有理数集是可数集，所以负有理数集也是可数集，所以有理数集是可数集。
+
+    \qde
+\end{proof}
+
+\begin{proposition}
+    \label{th:repn}
+    $\RR \sim \PP (\NN)$
+\end{proposition}
+
+\begin{proof}
+    设数列$\{a_n\},\forall n,a_n \in\{0,1\}$
+
+    令全体$\{a_n\}$组成的数列为$A$，则$A\sim \PP(\NN)$，因为存在双射$f:\PP \rightarrow A$，$f$定义如下
+    \[\forall n,\text{若}n\in B(B\in \PP(\NN)),\text{则}a_n=1,\text{否则}a_n=0\]
+
+    注意到$B=\{\{a_n\}:\exists k\geq 0,\forall n\geq k, a_n=1\}$是可数的，所以$\dbar{A\backslash B} = \dbar{A}$
+
+    而$\forall a_n \in A\backslash B,r\in [0,1)$可唯一表示为
+
+    \[r=\sum_{n=1}^{\infty} \frac{a_n}{2^n}\]
+
+    所以$\dbar{\RR} = \dbar{B\backslash A} = \dbar{A} = \dbar{\PP(\NN)}$
+\end{proof}
+
+\begin{remark}
+    上述$A$中的元素并不能唯一地表示为那个和式，这个原因之后再讲
+\end{remark}
+
+由命题\ref{th:repn}，可得出$\RR$是不可数集
