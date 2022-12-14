@@ -1,0 +1,136 @@
+\section{实数}
+
+实数理论这一节的目标是从基本的集合论出发（只假设同学们熟知有理数和⾃然数），通过严格和完备的推理，证明若干论题作为基本的工具。这些通过严格论证得来的工具将会⽀撑着我们直观的图像，使得我们可以形象地思考和解决问题的同时不失严谨。
+
+\subsection{实数的公理化描述}
+
+$\RR$是一个集合，设$x,y,z\in \RR$
+
+\begin{itemize}
+    \item $\RR$上有两个操作
+    
+    \begin{itemize}
+        \item 加法$+:\RR \times \RR \rightarrow \RR,(x,y)\mapsto x+y$
+        \item 乘法：$\cdot \RR\times\RR\rightarrow\RR,(x,y)\mapsto x\cdot y$
+    \end{itemize}
+
+    \item $\RR$上有一个序关系$\leq$：$x\leq y$
+\end{itemize}
+
+规定四元组$(\RR,+,\cdot,\leq)$满足以下四套公理：
+
+\begin{itemize}
+    \item[(F)] 域公理：$\RR$是一个域
+    \begin{enumerate}[(F1)]
+        \item 加法结合律：$x+(y+z) = (x+y)+z$
+        \item 加法交换律：$x+y=y+z$
+        \item 存在加法单位元$\exists 0\in \RR.\forall x\in \RR,0+x=x$
+        \item 加法逆元的存在性$\forall x\in \RR,\exists -x\in \RR,x+(-x)=0$\\
+        \begin{remark}
+            若(F1)-(F4)成立，则$(\RR,+)$被称作是一个交换群。同时，$-x$目前只是一个记号，因为我们还未定义减法运算。
+        \end{remark}
+        \item 乘法结合律$x\cdot(y\cdot z) = (x\cdot y)\cdot z$
+        \item 乘法交换律$x\cdot y = y\cdot z$
+        \item 存在乘法单位元$\exists 1\in \RR,1\neq 0,\forall x\in\RR, 1\cdot x = x$
+        \item 乘法逆元的存在性$\forall x\in \RR-\{0\},\exists x^{-1}\in \RR,x\cdot x^{-1}=1$\\
+        \begin{remark}
+            (F5)-(F9)这四条公理表明：$(\RR^{\times}:=\RR\backslash\{0\},\cdot)$是一个交换群，同时强调$x^{-1}$也只是一个记号，因为还未定义乘方运算。
+        \end{remark}
+        \item 乘法分配律$x\cdot(y+z) = x\cdot y+x\cdot z$
+    \end{enumerate}
+\end{itemize}
+
+假定满足(F1)-(F7)以及(F9)，我们就称$(\RR,+,\cdot)$是一个交换环，满足这9条公理的$(\RR,+,\cdot)$被称作是一个域
+
+对于正整数$n$，我们约定$x^n=x\cdot x\cdots \cdot x$（共$n$个$x$），$nx=x+x+\cdots +x$（共$n$个$x$）。类似的，对于$n\in\ZZ,n<0$，我们约定$x^n=x^{-1}\cdot x^{-1}\cdots \cdot x^{-1}$（共$n$个$x^{-1}$），$nx=(-x)+(-x)+\cdots+(-x)$（共$n$个$-x$）。我们规定$0x=0$，$x^0=1(x\neq 0)$.
+
+由此，我们定义了以整数$n\in \ZZ$为幂的幂函数：
+\[\RR\rightarrow\RR,x\mapsto x^n\]
+
+\begin{itemize}
+    \item[(O)] $\RR$是有序域
+    \begin{enumerate}[(O1)]
+        \item 序的传递性：$x\leq y,y\leq z\Rightarrow x\leq z$
+        \item 序可以决定元素：$x\leq y,y\leq x\Rightarrow x=y$
+        \item 全序关系$\forall x,y$，要么$x\leq y$，要么$y\leq x$（可以都成立）
+        \item 与加法相容：$x\leq y\Rightarrow x+z\leq y+z$
+        \item 与乘法相容：$x\geq 0,y\geq 0\Rightarrow xy\geq 0$
+    \end{enumerate}
+\end{itemize}
+
+在$\geq,\leq$的基础上，我们给出大于号和小于号的定义：若$x\leq y$且$x\neq y$，则$x<y$，类似地，可以定义$x>y$.
+
+由全序关系，我们可以知道，如下三种关系必居其一且互斥：
+
+$x<y,x=y,x>y$
+
+另外，若$x>0$，我们就称$x$是正实数并且称它的符号是正的，记作$\sign(x)=+$；如果$x<0$，我们就称$x$是负实数并且称它的符号是负的，记作$\sign(x)=-$.换句话说，我们定义了一个映射：
+\[\sign:\RR^{\times} \rightarrow\{+,-\}\]
+
+\begin{remark}
+    注意这里的$\sign$并非$\sign$函数
+\end{remark}
+
+\begin{definition}[区间]
+    设$a,b\in\RR,a<b$，定义开区间、闭区间和半开半闭区间如下：
+    \begin{equation*}
+        [a,b] :=\{x\in\RR : a\leq x\leq b\}
+    \end{equation*}
+    \begin{equation*}
+        (a,b) :=\{x\in\RR : a< x< b\}
+    \end{equation*}
+    \begin{equation*}
+        [a,b) := \{x\in\RR : a\leq x< b\}
+    \end{equation*}
+    \begin{equation*}
+        (a,b] :=\{x\in\RR : a< x\leq b\}
+    \end{equation*}
+    另外，作为约定：
+    \begin{equation*}
+        [a,+\infty):={x\in\RR:x\geq a}
+    \end{equation*}
+    \begin{equation*}
+        (a,+\infty):={x\in\RR:x< a}
+    \end{equation*}
+    \begin{equation*}
+        (-\infty,b]:={x\in\RR:x\leq b}
+    \end{equation*}
+    \begin{equation*}
+        (-\infty,b):={x\in\RR:x< b}
+    \end{equation*}
+
+    其中$a$和$b$分别被称作这些区间的左端点和右端点
+\end{definition}
+
+\begin{itemize}
+    \item[(A)] Archimedes 公理：$\RR$是Archimedes有序域，即\\
+    $\forall x>0$和$y$，$\exists n\in\NN, nx\geq y$
+\end{itemize}
+
+基于以上公理，我们可以定义整数。进一步地，我们可以定义有理数。
+
+\begin{definition}[有理数]
+    若$p,q\in\ZZ,q\neq0$，则定义$\displaystyle \frac{p}{q}$为有理数
+
+    有理数集记作$\QQ$
+\end{definition}
+
+由有理数的定义，我们将$\RR\backslash\QQ$称为无理数
+
+在实数这一章节中，一个关键点就是构造$\sqrt{2},e,\pi$这样的数。中学数学似乎从未给出这些数的具体定义（只是告诉了某些性质）。然而，上述公理并不足够定义这些无理数。
+
+\begin{itemize}
+    \item[(I)] 区间套公理
+\end{itemize}
+
+给定有限（即下面的$a_n$和$b_n$均为实数）闭区间的序列$\{I_n = [a_n,b_n]\}_{n=1,2,\cdots}$，如果这个序列是下降的，即$I_1\supset I_2\supset \cdots$，那么他们的交集非空，即
+
+\begin{equation*}
+    \lim_{n\rightarrow \infty}I_n:=\bigcap_{n\geq 1}I_n\neq \varnothing
+\end{equation*}
+
+\begin{definition}[实数]
+    满足上述四套公理系统(F),(O),(A),(I)的四元组$(\RR,+,\cdot,\leq)$称作是实数
+\end{definition}
+
+事实上，有理数也满足(F),(O),(A)这三套公理系统，所以，要想得到我们中学所熟悉的实数，区间套公理是不可或缺的。
