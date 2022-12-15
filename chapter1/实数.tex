@@ -134,3 +134,166 @@ $x<y,x=y,x>y$
 \end{definition}
 
 事实上，有理数也满足(F),(O),(A)这三套公理系统，所以，要想得到我们中学所熟悉的实数，区间套公理是不可或缺的。
+
+\subsection{Dedekind分割}
+
+\begin{definition}[Dedekind分割与实数的构造]
+    设集合$X\subset \QQ$，令$X' = \QQ \backslash X$，如果下面三条性质都成立：
+
+    \begin{enumerate}
+        \item $X\neq \varnothing,x'\neq \varnothing$
+        \item $\forall x\in X,x'\in X$，都有$x<x'$
+        \item $X$中没有最大元
+    \end{enumerate}
+
+    则称$X$或$X\cup X'$是$Q$的一个Dedekind分割。我们用$\mathcal{R}$表示所有Dedekind分割组成的集合
+\end{definition}
+
+现在，我们要在$\mathcal{R}$上定义序关系，加法和乘法，使得$(\mathcal{R},+,\cdot,\leq)$满足四套公理。
+
+首先定义序关系。对任意的$X,Y\in\mathcal{R}$，作为$\QQ$的子集，若
+
+\begin{itemize}
+    \item $X=Y$，则称$X=Y$
+    \item $X\subset Y$，且$X\neq Y$，则称$X<Y$
+\end{itemize}
+
+不难验证这个序关系满足公理(O)
+
+现在定义加法运算。对任意的$X,Y\in\mathcal{R}$，定义$X+Y:=\{x+y:x\in X,y\in Y\}$
+
+同时定义零元素$\bar{0}$为$\bar{0}=X_0=\{x\in \QQ:x<0\}$
+
+首先需要证明$X+Y$是个Dedekind分割，即
+
+\begin{enumerate}
+    \item $X+Y$及其补集是非空的
+    \item $\forall x+y\in X+Y$，其中$x\in X,y\in Y$，如果有理数$z<x+y$，那么$z\in X+Y$
+    \item $X+Y$没有最大元
+\end{enumerate}
+
+\begin{proof}
+    先证明第一条。由于$X$和$Y$非空，显然，$X+Y$非空。
+
+    随意选定$x_0'\in X',y_0'\in Y'$，那么$\forall x\in X,y\in Y$，都有$x<x_0',y<y_0'$
+    
+    所以，$\forall x\in X,y\in Y$，我们都有$x+y<x_0'+y_0'$，也就是说$x_0'+y_0'$比$X+Y$中所有数都大。
+    
+    特别地，$x_0'+y_0'\notin X+Y$，所以$X+Y$的补集不是空集
+
+    再证明第二条。
+
+    注意到$z<x+y\Leftrightarrow z-x<y$，所以$z-x\in Y$，又$x\in X$，所以$x+z-x\in X+Y$，即$z\in X+Y$
+
+    最后证第三条。用反证法。
+
+    假设$X+Y$中有最大元$x_0+y_0$，其中$x_0\in X,y_0\in Y$。根据定义，由于$X$和$Y$没有最大元，所以存在$x\in X,y\in Y$，使得$x_0<x,y_0<y$，从而$x_0+y_0<x+y$，而这与$x_0+y_0$是最大元的假设矛盾。
+\end{proof}
+
+下面，我们需要验证和加法相关的几条公理，如果不加其他的描述，默认$X,Y,Z\in\mathcal{R}$
+
+根据定义，加法交换律(F2)和加法结合律(F1)显然成立。现证明(O4)
+
+\begin{itemize}
+    \item[(O4)] 如果$x<y$，那么$X+Z<Y+Z$ 
+\end{itemize}
+
+(O4)的证明比较复杂，需要用到一个引理
+
+\begin{lemma}
+    $X$是一个Dedekind分割。那么，对于任意正整数$n$，总存在$x\in X,x'\in X'$，使得
+
+    \begin{equation*}
+        0<x'-x,\frac{1}{n}
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    任意选定$x_0\in X,x_0'\in X'$，尝试归纳地构造一系列$(x_k,x_k')$，其中$x\geq 0,x_k \in X,x_k'\in X'$。
+
+    设$(x_k,x_k')$已经构造完成，考虑$y=\displaystyle \frac{1}{2}(x_k+x_k')$，有两种情况：如果$y\in X$，那么令$(x_{k+1},x_{k+1}')=(y,x_k')$；如果$y\in X'$，那么定义$(x_{k+1},x_{k+1}')=(x_k,y)$
+
+    显然，有
+
+    \begin{equation*}
+        |x_{k+1}-x_{k+1}'|=\frac{1}{2}|x_k-x_k'|\ \Rightarrow \ |x_k-x_k'| = \frac{1}{2^k}|x_0-x_0'|
+    \end{equation*}
+
+    对任意$k$成立。
+
+    特别地，选取$k_0$，使得$2^{k_0}>n|x_0-x_0'|$，从而$x=x_{k_0}\in X$和$x'=x_{k_0}'\in X'$满足要求
+
+    \qde
+\end{proof}
+
+现在回到(O4)的证明
+
+\begin{proof}
+    不难发现，若$X<Y$，显然$X+Z\leq Y+Z$.所以只需要证明$X+Z\neq Y+Z$即可
+
+    在$Y\backslash X$中选取$y,\tilde{y}$.再选取合适的自然数$n$，使得$\displaystyle \frac{1}{n}<y-\tilde{y}$.不难证明，$n$总是存在。
+
+    根据引理，再取$z\in Z,z'\in Z'$，使得$\displaystyle z'-x<\frac{1}{n}$
+
+    现在，只需证明$y+z\notin X+Z$，使用反证法
+
+    假设$y+z \in X+Z$，那么存在$x\in X,z_1\in Z$，使得$y+z=x+z_1$.
+
+    按照定义$x<\tilde{y}$，所以$z_1<z'$.这样，就得到如下两个不等式：
+
+    \begin{equation*}
+        x<(\tilde{y}-y)+y
+    \end{equation*}
+
+    \begin{equation*}
+        z_1<(z'-z)+z<\frac{1}{n}+z<(y-\tilde{y})+z
+    \end{equation*}
+
+    将两式相加，得到$x+z_1<y+Z$，矛盾
+\end{proof}
+
+接下来验证(F3)
+
+\begin{itemize}
+    \item[(F3)] $\forall X\in \mathcal{R},\bar{0}+X=X$
+\end{itemize}
+
+\begin{proof}
+    根据$\bar{0}$的定义，$\bar{0}+X=\{x+(-a):a\in \QQ_{>0}\}$，
+    
+    假设$x-a\in \bar{0}+X$是任意给定的一个元素，其中$x\in X,a\in \QQ_{>0}$，那么，根据$x-a<x$，我们知道$x-a\in X$，即$\bar{0}+X\subset X$；
+
+    假设$x\in X$是任给定的一个元素，那么一定存在$x'\in X$，使得$x>x'$
+
+    令$a=x'-x\in\QQ_{>0}$，从而
+
+    \begin{equation*}
+        x=x'+(-a)
+    \end{equation*}
+
+    即$x\in \bar{0}+x$，所以$X\subset \bar{0}+X$
+\end{proof}
+
+\begin{itemize}
+    \item[(F4)] 对任意的Dedekind分割$X$和$Y$，存在唯一的$Z\in \mathcal{R}$，使得$X+Z=Y$ 
+\end{itemize}
+
+$Y=\bar{0}$的情况就是公理(F5)
+
+\begin{proof}
+    $X,Y\in\mathcal{R}$给定，我们按照下面的方式定义$Z$
+    \begin{equation*}
+        Z=\{y-x':y\in Y,x' \in X' \}
+    \end{equation*}
+
+    首先需要证明$Z\in \mathcal{R}$，这个证明方法与之前验证$X+Y\in\mathcal{R}$的方法类似：
+
+    \begin{itemize}
+        \item $Z\neq \varnothing,Z' \neq \varnothing$ \\
+        Z显然不是空集。为了说明$Z'$不是空集，我们选定$y_o'\in Y,x_0\in X$，那么只需要说明$y_0'-x_0\notin Z$即可；如若不然，存在$y\in Y$和$x'\in X'$，使得$y-x' = x_0'-x_0$，即$y+x_0=y_0'+x'$，这与$y<y_0'$和$x_0<x$矛盾
+        \item 对任意的$y-x\in Z$，其中$y\in Y,x'\in X'$，如果$z<y-x'$，就一定有$z\in Z$\\
+        只需要把$z$分解为$z=y-(y-z)$，根据$z<y-x'$，我们知道$y-z>x'$，我已$y-z\in X'$，所以$z$可以写成$Y$中元素与$X'$中元素的差
+        \item $Z$中的元素没有最大元\\
+        显然成立
+    \end{itemize}
+\end{proof}
