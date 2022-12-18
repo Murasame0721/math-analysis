@@ -135,9 +135,9 @@ $x<y,x=y,x>y$
 
 事实上，有理数也满足(F),(O),(A)这三套公理系统，所以，要想得到我们中学所熟悉的实数，区间套公理是不可或缺的。
 
-\subsection{Dedekind分割}
+\subsection{Dedekind分割与实数的构造}
 
-\begin{definition}[Dedekind分割与实数的构造]
+\begin{definition}[Dedekind分割]
     设集合$X\subset \QQ$，令$X' = \QQ \backslash X$，如果下面三条性质都成立：
 
     \begin{enumerate}
@@ -149,6 +149,8 @@ $x<y,x=y,x>y$
     则称$X$或$X\cup X'$是$Q$的一个Dedekind分割。我们用$\mathcal{R}$表示所有Dedekind分割组成的集合
 \end{definition}
 
+\subsubsection*{序关系}
+
 现在，我们要在$\mathcal{R}$上定义序关系，加法和乘法，使得$(\mathcal{R},+,\cdot,\leq)$满足四套公理。
 
 首先定义序关系。对任意的$X,Y\in\mathcal{R}$，作为$\QQ$的子集，若
@@ -159,6 +161,8 @@ $x<y,x=y,x>y$
 \end{itemize}
 
 不难验证这个序关系满足公理(O)
+
+\subsubsection*{加法}
 
 现在定义加法运算。对任意的$X,Y\in\mathcal{R}$，定义$X+Y:=\{x+y:x\in X,y\in Y\}$
 
@@ -296,4 +300,136 @@ $Y=\bar{0}$的情况就是公理(F5)
         \item $Z$中的元素没有最大元\\
         显然成立
     \end{itemize}
+
+    现在来说明$X+Z=Y$
+
+    由于$X+Z$中的元素形如$x+(y-x')$，其中$x\in X,y\in Y$，根据$x<x'$，所以这个元素必然大于$y$，即它在$Y$中，所以$X+Z\subset Y$
+
+    对任意$Y$，由于$Y$没有最大元，可选取$\tilde{y}\in Y$，使得$y<\tilde{y}$.根据上面的引理，还可以选取$x\in X$和$x' \in X$，使得$x'-x<\tilde{y}-y$
+
+    那么$\tilde{y}=y+(x'-x)<y$，所以$\tilde{y}\in Y$，从而
+    \begin{equation*}
+        y=x+(\tilde{y}-x')\in X+Z 
+    \end{equation*}
+
+    这说明$Y\subset X+Z$，综上，$X+Z=Y$
+\end{proof}
+
+由上面刚刚证明的(F4)，我们可以定义相反数的运算：
+
+\begin{equation*}
+    -:\mathcal{R}\rightarrow\mathcal{R},X\mapsto -X
+\end{equation*}
+
+其中$-X$是使得$X+Z=\bar{0}$的那个$Z$
+
+根据定义，我们有$-X=\{y-x':y\in \bar{0},x\in X'\}$，根据公理(F1)-(F4)，这个$Z$是唯一的，并且$-(-X)=X$
+
+同时，对于有理数$\displaystyle \frac{p}{q}$，有$X_{-\frac{p}{q}}=-X_{\frac{p}{q}}$，这个证明留作练习。
+
+对于$X\in\mathcal{R}$，如果$X>\bar{0}$，我们就称$X$是正的；如果$X<\bar{0}$，我们就称$X$是负的。
+
+\begin{example}%需要移动位置
+    \begin{enumerate}
+        \item 证明：$X$是正的当且仅当$X$中有正的有理数
+        \item 证明：$X$是正的当且仅当$-X$是负的
+    \end{enumerate}
+\end{example}
+
+根据例题的立一个结论，我们现在可以证明Archimedes公理(A)，即：
+
+如果Dedekind分割$X>\bar{0}$，那么对于任意的$Y\in\mathcal{R}$，存在正整数$n$，使得$nX>Y$（这里的$nX$意思是$n$个$X$相加）
+
+类似于上面的证明，这个并不难验证
+
+\subsubsection*{乘法}
+
+现在定义乘法运算。对于$X,Y\in\mathcal{R}$，我们分情况讨论
+
+\begin{equation*}
+    X\cdot Y=\begin{cases}
+        \bar{0},\quad \text{如果}X=\bar{0}\text{或}Y=\bar{0}\\
+        \{x\cdot y:x\geq 0,x\in X,y\geq 0,y\in Y\}\cup\{0\},\quad\text{如果}X>0,Y>0\\
+        -(X\cdot (-Y)),\quad\text{如果}X>0,Y<0\\
+        -((-X)\cdot Y),\quad \text{如果}X<0,Y>0\\
+        ((-X)\cdot(-Y)),\quad \text{如果}X<0,Y<0
+    \end{cases}
+\end{equation*}
+
+我们希望（并将证明）乘法单位元恰好就是$\bar{1} = X_1 =\{x\in \QQ:X<1\}$
+
+接下来的公理验证部分留作练习。
+
+\section{实数的基数与不可数集}
+
+首先，$\RR$是不可数集，这个我们之前其实已经证明过了，如果没有印象，请根据如下证明过程自行复习。
+
+\begin{theorem}
+    $\RR$是不可数集
+\end{theorem}
+
+\begin{proof}
+    由命题\ref{th:repn}和无最大基数定理，得$\dbar{\RR}>\dbar{N}$.
+
+    所以$\RR$是不可数集
+\end{proof}
+
+除上述证明外，还有Cantor对角线法则的经典证明。这里给出一种基于区间套原理的证明。
+
+首先给出一个引理
+
+\begin{lemma}
+    如果$\{x_1,x_2,\cdots \}$是$\RR$的一个可数子集，那么存在闭区间套$I_1\supset I_2\supset \cdots$，使得对任意的$n$，$x_n \notin I_n$
+\end{lemma}
+
+\begin{proof}
+    首先，显然能够找到一个闭区间，使得$x_1\notin I_1$，设$I_1=[a_1,b_1]$
+
+    按照以下方法进行下一个闭区间的递推
+
+    如果$\displaystyle x_{n+1}\in\left[a_n,\frac{a_n+b_n}{2}\right)$，则令$I_{n+1} = \displaystyle\left[\frac{a_n+b_n}{2},b_n\right]$；
+
+    如果$\displaystyle x_{n+1}\in\left(\frac{a_n+b_n}{2},b_n\right]$，则令$\displaystyle I_{n+1} = \left[a_n,\frac{a_n+b_n}{2}\right]$；
+
+    如果$\displaystyle x_{n+1}=\frac{a_n+b_n}{2}$，则令$\displaystyle I_{n+1} = \left[a_n,\frac{a_n+b_n}{4}\right]$；
+
+    如果$x_{n+1}\notin I_n$，则令$I_{n+1}=I_n$
+
+    这样，就得到了一个闭区间套，使得$\forall n,x_n\notin I_n$
+
+    \qde
+\end{proof}
+
+现在正式开始证明$\RR$是不可数集
+
+\begin{proof}
+    假设$\RR$是$\RR$的一个可数子集，那么存在一个闭区间套$I_1\supset I_2\supset \cdots$，使得对任意的$n$，$x_n \notin I_n$.
+
+    但是，对于任意的闭区间，总有一个实数元素，这与假设矛盾，所以$\RR$不可数。
+
+    \qde
+\end{proof}
+
+\begin{definition}
+    称$\RR$的基数为连续基数，记为$c$（或$\aleph_1$）
+\end{definition}
+
+类似于可数集的可数并仍然可数，基数为$c$的集合经过可数并后，依然基数为$c$
+
+\begin{theorem}
+    设集合列$\{A_k\}$，若$\forall k,\dbar{A_k}=c$，则
+    \begin{equation*}
+        A = \bigcup_{k=1}^{\infty}A_k
+    \end{equation*}
+
+    的基数依然为$c$
+\end{theorem}
+
+\begin{proof}
+    不妨假定$A_k$之间交集为空。设$A_k\sim[k,k+1)$，有
+
+    \begin{equation*}
+        \bigcup_{k=1}^{\infty}A_k\sim[1,\infty)\sim \RR
+    \end{equation*}
+    \qde
 \end{proof}
